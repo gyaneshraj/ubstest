@@ -32,11 +32,11 @@ public class TimeConverterImpl implements TimeConverter {
 		return finalOutput.toString();
 	}
 
-	private String getSymbolsForSeconds(int seconds) {
-		return (seconds % 2 == 0 ? "Y\n" : "O\n");
+	public String getSymbolsForSeconds(int seconds) {
+		return (seconds % 2 == 0 ? "Y\r\n" : "O\r\n");
 	}
 
-	private String getSymbolsForHours(int hours) {
+	public String getSymbolsForHours(int hours) {
 		int secondLineHours = hours % 5;
 		int firstLineHours = hours/5;
 		String hourStr = "";
@@ -44,15 +44,15 @@ public class TimeConverterImpl implements TimeConverter {
 		for(int i=0; i<firstLineHours; i++){
 			hourStr += "R";
 		}
-		hourStr = StringUtils.rightPad(hourStr, 4, "O") + "\n";
+		hourStr = StringUtils.rightPad(hourStr, 4, "O") + "\r\n";
 		for(int i=0; i<secondLineHours; i++){
 			secondLineHourStr += "R";
 		}
-		secondLineHourStr = StringUtils.rightPad(secondLineHourStr, 4, "O") + "\n";
+		secondLineHourStr = StringUtils.rightPad(secondLineHourStr, 4, "O") + "\r\n";
 		return hourStr+secondLineHourStr;
 	}
 
-	private Object getSymbolsForMinutes(int minutes) {
+	public String getSymbolsForMinutes(int minutes) {
 		int secondLineMinutes = minutes % 5;
 		int firstLineMinutes = minutes/5;
 		String minuteStr = "";
@@ -64,11 +64,11 @@ public class TimeConverterImpl implements TimeConverter {
 				minuteStr += "Y";
 			}
 		}
-		minuteStr = StringUtils.rightPad(minuteStr, 11, "O") + "\n";
+		minuteStr = StringUtils.rightPad(minuteStr, 11, "O") + "\r\n";
 		for(int i=0; i<secondLineMinutes; i++){
 			secondLineMinuteStr += "Y";
 		}
-		secondLineMinuteStr = StringUtils.rightPad(secondLineMinuteStr, 4, "O") + "\n";
+		secondLineMinuteStr = StringUtils.rightPad(secondLineMinuteStr, 4, "O");
 		return minuteStr+secondLineMinuteStr;
 	
 	}
