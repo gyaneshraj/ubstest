@@ -4,31 +4,16 @@ import org.apache.commons.lang.StringUtils;
 
 public class TimeConverterImpl implements TimeConverter {
 
-	/*public static void main(String[] args) {
-		TimeConverter converter = new TimeConverterImpl();
-		converter.convertTime("00:00:00");
-		System.out.println("===============End Test-1================");
-		converter.convertTime("13:17:01");
-		System.out.println("===============End Test-2================");
-		converter.convertTime("23:59:59");
-		System.out.println("===============End Test-3================");
-		converter.convertTime("24:00:00");
-		System.out.println("===============End Test-4================");
-	}*/
-	
 	@Override
 	public String convertTime(String aTime) {
 		String str[] = aTime.split(":");
-		//System.out.println(str);
 		int seconds = Integer.parseInt(str[2]);
 		int minutes = Integer.parseInt(str[1]);
 		int hours = Integer.parseInt(str[0]);
-		//System.out.println(hours+":"+minutes+":"+seconds);
 		StringBuffer finalOutput = new StringBuffer("");
 		finalOutput.append(getSymbolsForSeconds(seconds));
 		finalOutput.append(getSymbolsForHours(hours));
 		finalOutput.append(getSymbolsForMinutes(minutes));
-		//System.out.println(finalOutput.toString());
 		return finalOutput.toString();
 	}
 
